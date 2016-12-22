@@ -2,16 +2,6 @@ module.exports = function(grunt) {
 
 	//Project config
 	grunt.initConfig({
-		sass: {
-			options: {
-				sourceMap: true
-			},
-			dist: {
-				files: {
-					'css/***.css': 'sass/***.sass'
-				}
-			}
-		},
 		watch: { 
 			scripts: { 
 				files: 
@@ -20,6 +10,16 @@ module.exports = function(grunt) {
 					['sass'], 
 				options: { 
 					spawn: false, 
+				}
+			}
+		},		
+		sass: {
+			options: {
+				sourceMap: true
+			},
+			dist: {
+				files: {
+					'css/***.css': 'sass/***.sass'
 				}
 			}
 		},
@@ -38,6 +38,7 @@ module.exports = function(grunt) {
 				src : 'assets/css/*.css'
 			},
 			options: {
+				watchTask: true,
 				server: {
 					baseDir: "./"
 				}
@@ -53,5 +54,5 @@ module.exports = function(grunt) {
 
 	//Default tasks
 
-	grunt.registerTask('default', ['sass', 'watch', 'imagemin', 'browserSync']);
+	grunt.registerTask('default', ['browserSync','sass', 'watch', 'imagemin']);
 }
