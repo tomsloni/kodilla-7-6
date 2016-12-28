@@ -18,17 +18,21 @@ module.exports = function(grunt) {
 				sourceMap: true
 			},
 			dist: {
-				files: {
-					'css/***.css': 'sass/***.sass'
-				}
+				files: [{
+					expand: true,
+					cwd: 'sass',
+					src: '**/*.sass',
+					dest: 'css/',
+					ext: '.css'		
+				}]
 			}
 		},
 		imagemin: {
 			dynamic: {
 				files: [{
 					expand: true,
-					cwd: 'images/',
-					src: ['***.{png,jpg,gif}'],
+					cwd: 'images',
+					src: '**/*.{png,jpg,gif}',
 					dest: 'images/build/'
 				}]
 			}
@@ -54,5 +58,5 @@ module.exports = function(grunt) {
 
 	//Default tasks
 
-	grunt.registerTask('default', ['browserSync','sass', 'watch', 'imagemin']);
+	grunt.registerTask('default', ['browserSync','sass', 'imagemin', 'watch']);
 }
